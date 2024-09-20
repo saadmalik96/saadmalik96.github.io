@@ -1,3 +1,3 @@
 # saadmalik96.github.io
 
-## Helo World!
+## Hello World!

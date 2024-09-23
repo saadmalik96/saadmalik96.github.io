@@ -1,3 +1,4 @@
+/* Reset and Box-Sizing */
 body, h1, h2, h3, h4, h5, h6, p, ul, li, nav, section, footer {
     margin: 0;
     padding: 0;
@@ -6,12 +7,16 @@ body, h1, h2, h3, h4, h5, h6, p, ul, li, nav, section, footer {
 
 /* Body */
 body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
     font-family: Helvetica, sans-serif;
     font-size: 18px;
     font-weight: 300;
     text-align: justify;
     margin: 0;
-    padding-top: 100px;
+    padding-top: 70px;
+    background-color: #f9f9f9; 
 }
 
 /* Header */
@@ -22,12 +27,14 @@ header {
     z-index: 1000;
     transition: box-shadow 0.3s ease-in-out;
     background-color: #fff;
+    box-shadow: none;
 }
 
 /* Container inside Header */
 .header-container {
     display: flex;
-    width: 60%;
+    width: 100%;
+    max-width: 1200px;
     align-items: center;
     justify-content: space-between;
     margin: 0 auto;
@@ -38,34 +45,31 @@ header {
 .site-title {
     color: #333;
     margin: 0;
-    font-size: 30px;
+    font-size: 24px;
     font-weight: 500;
 }
 
 /* Nav */
 nav {
     display: flex;
-    /* align-items: flex-start; */
+    gap: 15px;
 }
 
 .nav-button {
-    font-size: 20px;
+    font-size: 16px;
     text-decoration: none;
-    color: inherit;
+    color: #333;
     background-color: transparent;
-    flex: 1;
-    padding: 10px 15px;
+    padding: 8px 12px;
     border: none;
     cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-.nav-button:not(:last-child) {
-    margin-right: 10px; /* Space between buttons */
+    transition: color 0.3s ease, background-color 0.3s ease;
 }
 
 .nav-button:hover {
     text-decoration: underline;
+    color: #007bff;
+    background-color: rgba(0, 123, 255, 0.1);
 }
 
 /* Shadow when scrolled */
@@ -73,64 +77,73 @@ header.scrolled {
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
 }
 
-.sections {
+/* Main Sections */
+main.sections {
+    flex: 1;
     display: flex;
     flex-direction: column;
     align-items: center;
+    padding: 20px;
 }
 
 /* Section */
 section {
-    padding: 40px 20px;
     width: 100%;
-    height: 60vh;
-    padding: 0rem 10rem;
+    max-width: 1200px;
+    padding: 40px 20px;
     color: #02343F;
     display: flex;
     flex-direction: column;
     justify-content: center;
+    background-color: #fff;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .section-title {
-    font-size: 35px;
-    margin-bottom: 15px;
-    width: 100%;
+    font-size: 28px;
+    margin-bottom: 10px;
 }
 
 .section-title-secondary {
-    font-size: 22px;
+    font-size: 20px;
     margin-bottom: 20px;
-    width: 100%;
 }
 
 /* Home */
 #home {
     display: flex;
     flex-direction: column;
-    width: 66%;
+    width: 100%;
 }
 
 .text-and-image {
     display: flex;
+    flex-direction: row;
     align-items: flex-start;
+    flex-wrap: wrap;
 }
 
 .text-content {
-    line-height: 1.75;
     flex: 1;
+    min-width: 250px;
+    line-height: 1.75;
+    padding-right: 20px;
 }
 
 .profile-picture {
-    margin-left: 20px;
+    margin-top: 5px;
     padding-left: 10px;
+    flex: 0 0 250px;
 }
 
 .profile-picture img {
-    width: 250px;
+    width: 100%;
     height: auto;
 }
 
-
+/* Inline Links */
 .inline-link {
     text-decoration: none;
     color: #007bff;
@@ -143,82 +156,111 @@ section {
     color: #0056b3;
 }
 
-
-/* Project */
-
-#projects {
-    width: 75%;
-}
-
-.projects-container {
-    display: flex;
-    justify-content: flex-start;
-    width: 100%;
-    gap: 20px;
-}
-
-.project-list {
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
-    width: 25%;
-}
-
-.project-item {
-    cursor: pointer;
-    padding: 15px 20px;
-    background-color: #f2f2f2;
-    margin-bottom: 10px;
-    transition: background-color 0.3s ease;
-    border-radius: 5px;
-}
-
-.project-item:hover, .project-item.active {
-    background-color: #e0e0e0;
-}
-
-.project-content {
-    width: 75%; /* Adjust the width for the content area */
-}
-
-.project-details {
-    display: none;
-}
-
-.project-details.active {
-    display: block;
-}
-
-
-
-
 /* Footer */
-footer p{
+footer {
     background-color: #02343F;
     color: #fff;
     text-align: center;
-    justify-content: center;
     padding: 20px;
+    width: 100%;
 }
 
-/* Project list */
-section ul {
-    list-style-type: none;
+footer p {
+    margin: 0;
 }
 
-section ul li {
-    margin-bottom: 20px;
+/* Responsive Design */
+@media (max-width: 1200px) {
+    .header-container {
+        max-width: 90%;
+    }
+
+    .sections {
+        padding: 10px;
+    }
+
+    section {
+        padding: 30px 15px;
+    }
 }
 
-section ul li h4 {
-    margin-bottom: 5px;
+@media (max-width: 992px) {
+    .text-and-image {
+        flex-direction: column;
+    }
+
+    .profile-picture {
+        flex: 0 0 200px;
+        margin-left: 0;
+        padding-left: 0;
+    }
+
+    .profile-picture img {
+        width: 200px;
+    }
 }
 
-section ul li a {
-    color: #0066cc;
-    text-decoration: none;
+@media (max-width: 768px) {
+    .header-container {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    nav {
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-top: 10px;
+    }
+
+    .site-title {
+        font-size: 20px;
+    }
+
+    .nav-button {
+        font-size: 14px;
+        padding: 6px 10px;
+    }
+
+    .text-content {
+        padding-right: 0;
+    }
+
+    .profile-picture {
+        flex: 0 0 150px;
+        margin-top: 20px;
+    }
+
+    .profile-picture img {
+        width: 150px;
+    }
+
+    .section-title {
+        font-size: 24px;
+    }
+
+    .section-title-secondary {
+        font-size: 18px;
+    }
 }
 
-section ul li a:hover {
-    text-decoration: underline;
+@media (max-width: 480px) {
+    body {
+        font-size: 16px;
+    }
+
+    .nav-button {
+        padding: 5px 8px;
+    }
+
+    .profile-picture img {
+        width: 120px;
+    }
+
+    .section-title {
+        font-size: 20px;
+    }
+
+    .section-title-secondary {
+        font-size: 16px;
+    }
 }
